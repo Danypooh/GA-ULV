@@ -3,11 +3,13 @@ import { Appbar } from 'react-native-paper';
 
 
 export const HeaderComponent = (props: HeaderComponentParams) => {
+
+  const backgroundColor = "#FFFFFF";
+  const textColor = "#40916C"
   
   return(
-    <Appbar.Header>
-      <Appbar.BackAction/>
-      <Appbar.Content title={props.title}/>
+    <Appbar.Header theme={{ colors: { surface: backgroundColor} }} mode="center-aligned">
+      <Appbar.Content title={props.title} color={textColor}/>
     </Appbar.Header>
   );
 

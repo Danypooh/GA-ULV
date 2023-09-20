@@ -7,13 +7,13 @@ export const loginStyle = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
-    backgroundColor: "#1E8C45",
+    backgroundColor: "#40916C",
   },
   view: {
     width: "80%",
   },
   cardTitle: {
-    color: "#1E8C45",
+    color: "#40916C",
   },
   cardInput: {
     backgroundColor: 'transparent',
