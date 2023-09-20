@@ -6,10 +6,16 @@ export  const homeStyle = StyleSheet.create({
   },
   contentContainer: {
     flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around',
   },
   footer: {
     flexDirection: "row",
     justifyContent: "space-around",
     marginBottom: 50,
   },
+  button: {
+    width: 120,
+  }
 });
