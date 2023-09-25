@@ -9,7 +9,7 @@ export default function App() {
   
   return (
     <PaperProvider theme={theme}>
-      <RegisterScreen/>  
+      <HomeScreen/>  
     </PaperProvider>
   );
   

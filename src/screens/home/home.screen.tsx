@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView, View } from 'react-native';
-import { Button } from 'react-native-paper';
+import { Button, FAB } from 'react-native-paper';
 import { homeStyle } from './home.style';
-import { HeaderComponent } from '../../components/header/header.component';
-import { PlantComponent } from '../../components/header/plant.component';
+import { HeaderComponent } from './../../components/header/header.component';
+import { PlantComponent } from './../../components/plant.component';
+import { DropDown } from '../../components/dropDown.component';
+import { BotBtn } from '../../components/botBtn.component';
 
 const HomeScreen = () => {
+
+  const [botBtn, setBotBtn] = useState(true);
 
   const plantArr = ["P1", "P2", "P3", "P4"];
 
   return (
     <SafeAreaView style={homeStyle.flex}>
       <HeaderComponent title="My Greenhouse"/>
+      <DropDown/>
       <View style={homeStyle.contentContainer}>
         {plantArr.map((plant, index) =>
           <PlantComponent
@@ -21,15 +26,12 @@ const HomeScreen = () => {
           />
           )}
       </View>
+      
       <View style={homeStyle.footer}>
-        <Button 
-          theme={{colors: {outline: "#40916C"}}} mode="outlined" style={homeStyle.button}> 
-          Start 
-        </Button>
-        <Button 
-          theme={{colors: {primary: "#D1001F", outline: "#D1001F"}}} mode="outlined" style={homeStyle.button}> 
-          Stop 
-        </Button>
+        <View style={[homeStyle.content, {borderColor: botBtn ? "#40916C" : "red"}]}>
+          <BotBtn value={botBtn} handlePress={(botBtn: boolean) => setBotBtn(botBtn)}/>
+        </View>
+        <FAB icon="plus" style={homeStyle.fab} color="#FFFFFF"/>
       </View>
     </SafeAreaView>    
   );
