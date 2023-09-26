@@ -7,7 +7,7 @@ import { PlantComponent } from './../../components/plant.component';
 import { DropDown } from '../../components/dropDown.component';
 import { BotBtn } from '../../components/botBtn.component';
 
-const HomeScreen = () => {
+export const HomeScreen = () => {
 
   const [botBtn, setBotBtn] = useState(true);
 
@@ -37,5 +37,3 @@ const HomeScreen = () => {
   );
 
 }
-
-export default HomeScreen;

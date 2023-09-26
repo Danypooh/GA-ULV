@@ -4,8 +4,14 @@ import { Button, TextInput } from 'react-native-paper';
 import { registerStyle } from './register.styles';
 import { HeaderBackComponent } from '../../components/header/headerBack.component';
 
-export const RegisterScreen = () => {
+interface RegisterScreenProps {
+  navigation: any;
+}
+
+export const RegisterScreen = (props: RegisterScreenProps) => {
   
+  const register = () => props.navigation.navigate("Home");
+
   return (
     <SafeAreaView>
         <ScrollView>
@@ -33,7 +39,10 @@ export const RegisterScreen = () => {
               label="Phone number" keyboardType="phone-pad" 
               style={registerStyle.input} underlineColor="#40916C"
             />
-            <Button mode="contained" style={registerStyle.button}>Register</Button>
+            <Button 
+              mode="contained" style={registerStyle.button} onPress={register}>
+              Register
+            </Button>
           </View>
         </ScrollView>
     </SafeAreaView>
