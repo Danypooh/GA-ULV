@@ -15,7 +15,7 @@ export const RegisterScreen = (props: RegisterScreenProps) => {
   return (
     <SafeAreaView style={registerStyle.page}>
         <ScrollView>
-          <HeaderBackComponent title="Register"/>
+          <HeaderBackComponent title="Register" navigation={props.navigation}/>
           <View style={registerStyle.content}>
             <TextInput 
               label="Name" 
