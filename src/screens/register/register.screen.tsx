@@ -13,7 +13,7 @@ export const RegisterScreen = (props: RegisterScreenProps) => {
   const register = () => props.navigation.navigate("Home");
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={registerStyle.page}>
         <ScrollView>
           <HeaderBackComponent title="Register"/>
           <View style={registerStyle.content}>
