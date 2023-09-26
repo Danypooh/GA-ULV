@@ -7,7 +7,11 @@ import { PlantComponent } from './../../components/plant.component';
 import { DropDown } from '../../components/dropDown.component';
 import { BotBtn } from '../../components/botBtn.component';
 
-export const HomeScreen = () => {
+interface HomeScreenProps {
+  navigation?: any;
+}
+
+export const HomeScreen = (props: HomeScreenProps) => {
 
   const [botBtn, setBotBtn] = useState(true);
 
@@ -15,7 +19,7 @@ export const HomeScreen = () => {
 
   return (
     <SafeAreaView style={homeStyle.flex}>
-      <HeaderComponent title="My Greenhouse"/>
+      <HeaderComponent title="My Greenhouse" navigation={props.navigation}/>
       <DropDown/>
       <View style={homeStyle.contentContainer}>
         {plantArr.map((plant, index) =>
