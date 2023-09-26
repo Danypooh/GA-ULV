@@ -6,7 +6,6 @@ export  const homeStyle = StyleSheet.create({
     backgroundColor: "#FFFFFF",
   },
   contentContainer: {
-    flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
