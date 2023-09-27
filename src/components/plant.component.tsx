@@ -1,10 +1,17 @@
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Image } from 'react-native';
 
 export const PlantComponent = (props: PlantComponentParams) => {
   
+  const HEALTHY_LETTUCE = require("./../../assets/healthyLetucce.png");
+  const SICK_LETTUCE = require("./../../assets/sickLetucce.png");
+
+  let icon = props.plant == "P4" ? SICK_LETTUCE : HEALTHY_LETTUCE;
+
   return(
-      <Text style={styles.plant}>{props.plant}</Text>
+      <Image
+        style={styles.plant} 
+        source={icon}/>
   );
 
 }
@@ -17,15 +24,9 @@ interface PlantComponentParams {
 
 const styles = StyleSheet.create({
   plant: {
-    borderRadius: 50,
-    width: 100,
-    height: 100,
+    width: 150,
+    height: 150,
     marginHorizontal: 20,
     marginVertical: 40,
-    fontSize: 35,
-    textAlign: "center",
-    textAlignVertical: "center",
-    backgroundColor: "#40916C",
-    color: "#FFFFFF"
   },
 })

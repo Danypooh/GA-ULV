@@ -41,7 +41,7 @@ export const HomeScreen = (props: HomeScreenProps) => {
       </ScrollView>
       
       <View style={homeStyle.footer}>
-        <View style={[homeStyle.content, {borderColor: botBtn ? "#40916C" : "red"}]}>
+        <View style={[homeStyle.content, {borderColor: botBtn ? "#40916C" : "#BA0000"}]}>
           <BotBtn value={botBtn} handlePress={(botBtn: boolean) => setBotBtn(botBtn)}/>
         </View>
         <FAB icon="plus" style={homeStyle.fab} color="#FFFFFF" onPress={addPlant}/>

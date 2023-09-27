@@ -38,6 +38,6 @@ const styles = StyleSheet.create({
     color: "#40916C",
   },
   stop: {
-    color: "red"
+    color: "#BA0000"
   },
 })

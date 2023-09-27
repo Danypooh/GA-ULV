@@ -43,10 +43,10 @@ const styles = StyleSheet.create({
     alignSelf: "center"
   },
   text: {
-    color: "green",
+    color: "#5B8C5A",
   },
   dropdown: {
     width: "50%",
-    borderColor: "green"
+    borderColor: "#5B8C5A"
   }
 })

@@ -24,7 +24,7 @@ export const HeaderComponent = (props: HeaderComponentParams) => {
         visible={visible} 
         onDismiss={closeMenu} 
         contentStyle={{ backgroundColor: "#FFFFFF" }}
-        anchor={<Appbar.Action icon="menu" color="#40916C" onPress={openMenu}/>}>
+        anchor={<Appbar.Action icon="menu" color="#5B8C5A" onPress={openMenu}/>}>
         <Menu.Item 
           title="Logout" 
           style={{ backgroundColor: "#FFFFFF" }} 

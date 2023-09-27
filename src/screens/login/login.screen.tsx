@@ -1,9 +1,8 @@
 import React from 'react';
-import { SafeAreaView, View, Text } from 'react-native';
+import { SafeAreaView, View, Text, Image } from 'react-native';
 import { Card, TextInput, Button } from 'react-native-paper';
 import { loginStyle } from './login.styles';
 import { Formik } from 'formik';
-import { loginForm } from './login.form';
 
 interface LoginScreenProps {
   navigation: any;
@@ -14,17 +13,19 @@ export const LoginScreen = (props: LoginScreenProps) => {
   const login = () => props.navigation.navigate("Home");
   const register = () => props.navigation.navigate("Register");
 
+  const logo = require("./../../../assets/logo.png");
+
   return (
     <SafeAreaView style={loginStyle.content}>
+      <Image style={loginStyle.logo} source={logo} />
         <View style={loginStyle.view}>
           <Card>
             <Card.Title title="GA-ULV App" titleStyle={loginStyle.cardTitle}></Card.Title>
             <Card.Content>
               <Formik
                 initialValues={{ email: "", password: "" }}
-                onSubmit={login}
-                validationSchema={loginForm}>
-                {({ handleSubmit, handleChange, setFieldTouched, touched, errors, values }) => (
+                onSubmit={login}>
+                {({ handleSubmit, handleChange, setFieldTouched, touched, errors}) => (
                   <>
                     <TextInput 
                       label="Email" keyboardType="email-address" style={loginStyle.cardInput} 
@@ -32,7 +33,7 @@ export const LoginScreen = (props: LoginScreenProps) => {
                       onFocus={() => setFieldTouched("email")}/>
                     {
                       touched.email && errors.email ? 
-                        <Text style={{ color: "white", backgroundColor: "red" }}>
+                        <Text style={{ color: "white", backgroundColor: "#BA0000" }}>
                           {errors.email}
                         </Text>
                         : null
@@ -43,7 +44,7 @@ export const LoginScreen = (props: LoginScreenProps) => {
                       onFocus={() => setFieldTouched("password")}/> 
                     {
                       touched.password && errors.password ? 
-                        <Text style={{ color: "white", backgroundColor: "red" }}>
+                        <Text style={{ color: "white", backgroundColor: "#BA0000" }}>
                           {errors.password}
                         </Text>
                         : null
@@ -64,12 +65,10 @@ export const LoginScreen = (props: LoginScreenProps) => {
                     </Button>
                   </>
                 )}
-                
               </Formik>
             </Card.Content>
           </Card>
         </View>
-       
     </SafeAreaView>
   );
   

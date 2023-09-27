@@ -6,11 +6,21 @@ export const loginStyle = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    flexDirection: "row",
+    flexDirection: "column",
     backgroundColor: "#40916C",
+  },
+  logo: {
+    width: 125,
+    height: 125,
+    margin: 30,
+    backgroundColor: "#FFFFFF",
+    borderRadius: 100,
+    position: "absolute",
+    top: 100
   },
   view: {
     width: "80%",
+    bottom: -35,
   },
   cardTitle: {
     color: "#40916C",
