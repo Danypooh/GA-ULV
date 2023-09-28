@@ -3,6 +3,7 @@ import { SafeAreaView, View, Text, Image } from 'react-native';
 import { Card, TextInput, Button } from 'react-native-paper';
 import { loginStyle } from './login.styles';
 import { Formik } from 'formik';
+import { loginForm } from './login.form';
 
 interface LoginScreenProps {
   navigation: any;
@@ -24,7 +25,8 @@ export const LoginScreen = (props: LoginScreenProps) => {
             <Card.Content>
               <Formik
                 initialValues={{ email: "", password: "" }}
-                onSubmit={login}>
+                onSubmit={login}
+                validationSchema={loginForm}>
                 {({ handleSubmit, handleChange, setFieldTouched, touched, errors}) => (
                   <>
                     <TextInput 
