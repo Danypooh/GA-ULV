@@ -1,18 +1,32 @@
 import React from 'react';
-import { SafeAreaView, View, Text, Image } from 'react-native';
-import { Card, TextInput, Button } from 'react-native-paper';
+import { SafeAreaView, View, Image } from 'react-native';
+import { Card, TextInput, Button, Text } from 'react-native-paper';
 import { loginStyle } from './login.styles';
 import { Formik } from 'formik';
 import { loginForm } from './login.form';
+import { LoadingState } from '../../components/store/loading/LoadingState';
+
+import { hide, show } from './../../components/store/loading/loading.actions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from '@reduxjs/toolkit';
 
 interface LoginScreenProps {
   navigation: any;
+  loadingState: LoadingState;
+  hideLoading: Function;
+  showLoading: Function;
 }
 
-export const LoginScreen = (props: LoginScreenProps) => {
+const LoginScreen = (props: LoginScreenProps) => {
 
   const login = () => props.navigation.navigate("Home");
   const register = () => props.navigation.navigate("Register");
+  const forgotEmailPassword = () => {
+    props.showLoading();
+    setTimeout(() => {
+      props.hideLoading();
+    }, 3000)
+  }
 
   const logo = require("./../../../assets/logo.png");
 
@@ -52,7 +66,8 @@ export const LoginScreen = (props: LoginScreenProps) => {
                         : null
                     }
                     <Button 
-                      uppercase={false} style={loginStyle.cardButton} >
+                      uppercase={false} style={loginStyle.cardButton}
+                      onPress={forgotEmailPassword} >
                       Forgot email/password
                     </Button>
                     <Button 
@@ -75,3 +90,15 @@ export const LoginScreen = (props: LoginScreenProps) => {
   );
   
 }
+
+const mapStateToProps = (store: {loading: LoadingState}) => ({
+  loadingState: store.loading
+});
+const mapDispatchToProps = (dispatch: any) => (
+  bindActionCreators({
+    hideLoading: hide,
+    showLoading: show,
+  }, dispatch)
+);
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
