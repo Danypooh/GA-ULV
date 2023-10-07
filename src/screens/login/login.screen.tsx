@@ -13,7 +13,8 @@ import AuthService from '../../services/AuthService';
 import { hide, show } from './../../components/store/loading/loading.actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from '@reduxjs/toolkit';
-import { recoverPassword, recoverPasswordReset, recoverPasswordSuccess, recoverPasswordFail } from '../../components/store/login/login.actions';
+import { recoverPassword, recoverPasswordReset, recoverPasswordSuccess, recoverPasswordFail, 
+        login, loginFail, loginSuccess} from '../../components/store/login/login.actions';
 
 interface LoginScreenProps {
   navigation: any;
@@ -21,6 +22,9 @@ interface LoginScreenProps {
   loadingState: LoadingState;
   loginState: LoginState;
 
+  login: Function;
+  loginFail: Function;
+  loginSuccess: Function;
   recoverPassword: Function;
   recoverPasswordFail: Function;
   recoverPasswordReset: Function;
@@ -32,8 +36,9 @@ interface LoginScreenProps {
 const LoginScreen = (props: LoginScreenProps) => {
 
   const [recoveryEmail, setRecoveryEmail] = useState("");
+  const [userLogin, setUserLogin] = useState({email: "", password: ""});
 
-  useEffect(() => {
+  useEffect(() => {  //show loading & recover password action
     if (props.loginState.isRecoveringPassword) {
       props.showLoading();
 
@@ -45,13 +50,37 @@ const LoginScreen = (props: LoginScreenProps) => {
     } else {
       props.hideLoading();
     }
-  }, [props.loginState.isRecoveringPassword])
+  }, [props.loginState.isRecoveringPassword]);
 
-  const forgotEmailPassword = (email: string) => {
+  useEffect(() => {  //show loading & send user info
+    if (props.loginState.isLoggingIn) {
+      props.showLoading();
+
+      AuthService.login(userLogin.email, userLogin.password).then(user => {
+        props.loginSuccess(user);
+      }).catch(error => {
+        props.loginFail(error);
+      });
+    } else {
+      props.hideLoading();
+    }
+  }, [props.loginState.isLoggingIn]);
+
+  useEffect(() => {  //hide loading & go to Home screen
+    if (props.loginState.isLoggedIn) {
+      props.hideLoading();
+      props.navigation.navigate("Home");
+    }
+  }, [props.loginState.isLoggedIn]);
+
+  const forgotEmailPassword = (email: string) => { 
     setRecoveryEmail(email);
     props.recoverPassword();
   };
-  const login = () => props.navigation.navigate("Home");
+  const login = (userLogin: {email: string, password: string}) => {
+    setUserLogin(userLogin);
+    props.login()
+  };
   const register = () => props.navigation.navigate("Register");
   
 
@@ -144,6 +173,9 @@ const mapStateToProps = (store: MyAppState) => ({
 });
 const mapDispatchToProps = (dispatch: any) => (
   bindActionCreators({
+    login: login,
+    loginFail: loginFail,
+    loginSuccess: loginSuccess,
     recoverPassword: recoverPassword,
     recoverPasswordFail: recoverPasswordFail,
     recoverPasswordReset: recoverPasswordReset,
