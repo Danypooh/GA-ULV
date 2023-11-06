@@ -1,6 +1,5 @@
 import React from 'react';
 import { Appbar } from 'react-native-paper';
-import { StyleSheet } from 'react-native';
 
 interface HeaderBackComponentParams {
   title: string;
