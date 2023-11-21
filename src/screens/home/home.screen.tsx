@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { SafeAreaView, View, ScrollView } from 'react-native';
-import { FAB } from 'react-native-paper';
 import { homeStyle } from './home.style';
 import { HeaderComponent } from './../../components/header/header.component';
 import { DropDown } from '../../components/dropDown.component';
@@ -16,15 +15,6 @@ export const HomeScreen = (props: HomeScreenProps) => {
   const [botBtn, setBotBtn] = useState(true);
   const scrollViewRef = useRef<ScrollView | null>(null);
 
-  // const addPlant = () => {
-  //   setPlants([...plants, "P" + (plants.length + 1)]);
-
-  //   // Scroll to the bottom of the ScrollView
-  //   if (scrollViewRef.current) {
-  //     scrollViewRef.current.scrollToEnd({ animated: true });
-  //   }
-  // }
-
   return (
     <SafeAreaView style={homeStyle.flex}>
       <HeaderComponent title="My Greenhouse" navigation={props.navigation}/>
@@ -38,7 +28,6 @@ export const HomeScreen = (props: HomeScreenProps) => {
         <View style={[homeStyle.content, {borderColor: botBtn ? "#40916C" : "#BA0000"}]}>
           <BotBtn value={botBtn} handlePress={(botBtn: boolean) => setBotBtn(botBtn)}/>
         </View>
-        {/* <FAB icon="plus" style={homeStyle.fab} color="#FFFFFF" onPress={addPlant}/> */}
       </View>
     </SafeAreaView>    
   );
