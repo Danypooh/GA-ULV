@@ -8,7 +8,7 @@ export default function App() {
   
   return (
     <PaperProvider theme={theme}>
-      <AppNavigator/>  
+      <AppNavigator/>
     </PaperProvider>
   );
   

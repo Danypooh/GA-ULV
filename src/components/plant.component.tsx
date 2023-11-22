@@ -6,7 +6,7 @@ export const PlantComponent = (props: PlantComponentParams) => {
   const HEALTHY_LETTUCE = require("./../../assets/healthyLetucce.png");
   const SICK_LETTUCE = require("./../../assets/sickLetucce.png");
 
-  let icon = props.plant == "P4" ? SICK_LETTUCE : HEALTHY_LETTUCE;
+  let icon = props.state ? HEALTHY_LETTUCE : SICK_LETTUCE;
 
   return(
       <Image
@@ -17,9 +17,9 @@ export const PlantComponent = (props: PlantComponentParams) => {
 }
 
 interface PlantComponentParams {
-  key: number;
-  id: number;
-  plant: string;
+  key: string;
+  id: string;
+  state: boolean;
 }
 
 const styles = StyleSheet.create({
