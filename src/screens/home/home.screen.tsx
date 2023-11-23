@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { SafeAreaView, View, ScrollView } from 'react-native';
 import { homeStyle } from './home.style';
 import { HeaderComponent } from './../../components/header/header.component';
 import { DropDown } from '../../components/dropDown.component';
-import { BotBtn } from '../../components/botBtn.component';
+import PostData from '../../PostData';
 import FetchData from '../../FetchData';
 
 interface HomeScreenProps {
@@ -26,7 +26,7 @@ export const HomeScreen = (props: HomeScreenProps) => {
       
       <View style={homeStyle.footer}>
         <View style={[homeStyle.content, {borderColor: botBtn ? "#40916C" : "#BA0000"}]}>
-          <BotBtn value={botBtn} handlePress={(botBtn: boolean) => setBotBtn(botBtn)}/>
+          <PostData value={botBtn} handlePress={setBotBtn}/>
         </View>
       </View>
     </SafeAreaView>    
